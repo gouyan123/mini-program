@@ -1,0 +1,26 @@
+#server:
+#  port: 9090
+
+logging:
+  level:
+    root: DEBUG
+
+spring:
+  application:
+    name: back-server
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.100.49.95:3306/remindme?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+
+  redis:
+    host: 47.100.49.95
+    password:
+    port: 6379
+
+mybatis:
+    mapperLocations: classpath:mapper/*.xml
+    configuration:
+        mapUnderscoreToCamelCase: true
+        default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
