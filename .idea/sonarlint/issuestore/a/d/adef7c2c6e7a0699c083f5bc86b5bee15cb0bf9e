@@ -1,0 +1,4 @@
+
+csquid:S00112M"FDefine and throw a dedicated exception instead of using a generic one.(ûèˆ•üÿÿÿÿ
+csquid:S00112P"FDefine and throw a dedicated exception instead of using a generic one.(ž“ñ¸üÿÿÿÿ
+vsquid:S1149X"_Replace the synchronized class "StringBuffer" by an unsynchronized one such as "StringBuilder".(í…Ò‰
