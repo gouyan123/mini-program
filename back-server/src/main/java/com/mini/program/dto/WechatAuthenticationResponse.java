@@ -7,7 +7,9 @@ import java.io.Serializable;
 public class WechatAuthenticationResponse implements Serializable {
 
     private static final long serialVersionUID = 1250166508152483573L;
-
+    /**
+     * @JsonProperty("access_token") 将accessToken 序列化为 access_token
+     * */
     @JsonProperty("access_token")
     private final String accessToken;
 

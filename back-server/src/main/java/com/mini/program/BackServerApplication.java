@@ -4,9 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RemindmeApplication {
-
+public class BackServerApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(RemindmeApplication.class, args);
+		SpringApplication.run(BackServerApplication.class, args);
 	}
 }
