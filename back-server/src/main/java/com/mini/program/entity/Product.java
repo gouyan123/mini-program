@@ -1,9 +1,10 @@
 package com.mini.program.entity;
 
 import lombok.Data;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -14,6 +15,8 @@ public class Product{
     /**
      * 关联分类表id
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     /**
@@ -56,7 +59,11 @@ public class Product{
      */
     private String img;
     /**
-     * 详情图片
+     * 详情图片，以 ","分隔
      * */
-    private List<String> imgs;
+
+    private String imgs;
+
+    @ManyToOne
+    private Category c_id;
 }
