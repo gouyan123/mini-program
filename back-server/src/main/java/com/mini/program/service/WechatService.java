@@ -96,7 +96,7 @@ public class WechatService {
 //        Consumer consumer1 = consumerMapper.findConsumerByWechatOpenid(consumer.getWechatOpenid());
         Consumer tmp = consumerRepository.findByWechatOpenid(consumer.getWechatOpenid());
         if (null == tmp) {
-            consumerRepository.save(consumer);
+            consumerRepository.saveAndFlush(consumer);
         }
     }
 
@@ -112,7 +112,7 @@ public class WechatService {
         consumerExist.setPhone(consumer.getPhone());
         consumerExist.setUsername(consumer.getUsername());
 //        consumerMapper.updateConsumer(consumerExist);
-        consumerRepository.update(consumerExist);
+        consumerRepository.saveAndFlush(consumerExist);
     }
 
 }

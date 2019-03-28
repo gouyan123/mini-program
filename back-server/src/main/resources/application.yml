@@ -3,7 +3,7 @@
 
 logging:
   level:
-    root: ERROR
+    root: INFO,ERROR
 
 spring:
   application:
