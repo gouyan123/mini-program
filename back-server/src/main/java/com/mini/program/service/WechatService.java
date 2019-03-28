@@ -15,7 +15,6 @@ import com.mini.program.dao.ConsumerMapper;
 import com.mini.program.dto.WechatAuthCodeResponse;
 import com.mini.program.dto.WechatAuthenticationResponse;
 import com.mini.program.entity.Consumer;
-
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -93,10 +92,11 @@ public class WechatService {
     }
 
     private void loginOrRegisterConsumer(Consumer consumer) {
-        Consumer consumer1 = consumerMapper.findConsumerByWechatOpenid(consumer.getWechatOpenid());
-        if (null == consumer1) {
-            consumerMapper.insertConsumer(consumer);
-        }
+        consumerMapper.insertConsumer(consumer);
+//        Consumer consumer1 = consumerMapper.findConsumerByWechatOpenid(consumer.getWechatOpenid());
+//        if (null == consumer1) {
+//            consumerMapper.insertConsumer(consumer);
+//        }
     }
 
     public void updateConsumerInfo(Consumer consumer) {

@@ -1,9 +1,9 @@
 package com.mini.program.dao;
 
 import com.mini.program.entity.Consumer;
-import org.apache.ibatis.annotations.Mapper;
+//import org.apache.ibatis.annotations.Mapper;
 
-@Mapper
+//@Mapper
 public interface ConsumerMapper {
 
     Consumer findConsumerById(Long id);
