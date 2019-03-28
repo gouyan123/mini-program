@@ -1,14 +1,15 @@
 package com.mini.program.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.mini.program.enums.Gender;
 import lombok.Data;
+import javax.persistence.*;
 
 @Data
-@TableName(value = "comsumer")
+@Entity
+@Table(name = "consumer")
 public class Consumer {
-    @TableId
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String username;
     private String wechatOpenid;
@@ -27,7 +28,4 @@ public class Consumer {
     public Consumer() {
     }
 
-    public Consumer(String username) {
-        this.username = username;
-    }
 }
