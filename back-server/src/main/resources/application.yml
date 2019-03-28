@@ -3,7 +3,7 @@
 
 logging:
   level:
-    root: DEBUG
+    root: ERROR
 
 spring:
   application:
@@ -13,14 +13,15 @@ spring:
     url: jdbc:mysql://47.100.49.95:3306/miniprogram?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 123456
-
+  jpa:
+      hibernate:
+        ddl-auto: update  # 不要用create，会删除表；都使用update，第一次会创建表，以后更新表
+        show-sql: true
+        format-sql: true
   redis:
     host: 47.100.49.95
     password:
     port: 6379
-
-mybatis:
-    mapperLocations: classpath:mapper/*.xml
-    configuration:
-        mapUnderscoreToCamelCase: true
-        default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+#  data:
+#      rest:
+#        base-path: /fuhai  # 此时REST资源的路径变成了http://localhost:9002/fuhai/workers

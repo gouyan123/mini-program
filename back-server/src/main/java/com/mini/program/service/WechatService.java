@@ -2,6 +2,7 @@ package com.mini.program.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
+import com.mini.program.repository.ConsumerRepository;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,10 +12,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import com.mini.program.config.AppContext;
 import com.mini.program.config.WechatAuthProperties;
-import com.mini.program.dao.ConsumerMapper;
 import com.mini.program.dto.WechatAuthCodeResponse;
 import com.mini.program.dto.WechatAuthenticationResponse;
 import com.mini.program.entity.Consumer;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -24,7 +25,7 @@ public class WechatService {
     private static final Logger LOGGER = LoggerFactory.getLogger(WechatService.class);
 
     @Autowired
-    private ConsumerMapper consumerMapper;
+    private ConsumerRepository consumerRepository;
 
     /**
      * 服务器第三方session有效时间，单位秒, 默认1天
@@ -92,15 +93,15 @@ public class WechatService {
     }
 
     private void loginOrRegisterConsumer(Consumer consumer) {
-        consumerMapper.insertConsumer(consumer);
 //        Consumer consumer1 = consumerMapper.findConsumerByWechatOpenid(consumer.getWechatOpenid());
-//        if (null == consumer1) {
-//            consumerMapper.insertConsumer(consumer);
-//        }
+        Consumer tmp = consumerRepository.findByWechatOpenid(consumer.getWechatOpenid());
+        if (null == tmp) {
+            consumerRepository.save(consumer);
+        }
     }
 
     public void updateConsumerInfo(Consumer consumer) {
-        Consumer consumerExist = consumerMapper.findConsumerByWechatOpenid(AppContext.getCurrentUserWechatOpenId());
+        Consumer consumerExist = consumerRepository.findByWechatOpenid(AppContext.getCurrentUserWechatOpenId());
         consumerExist.setUpdatedBy(1L);
         consumerExist.setUpdatedAt(System.currentTimeMillis());
         consumerExist.setGender(consumer.getGender());
@@ -110,7 +111,8 @@ public class WechatService {
         consumerExist.setNickname(consumer.getNickname());
         consumerExist.setPhone(consumer.getPhone());
         consumerExist.setUsername(consumer.getUsername());
-        consumerMapper.updateConsumer(consumerExist);
+//        consumerMapper.updateConsumer(consumerExist);
+        consumerRepository.update(consumerExist);
     }
 
 }

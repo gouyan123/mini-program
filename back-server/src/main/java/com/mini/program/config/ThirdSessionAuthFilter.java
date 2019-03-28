@@ -1,13 +1,12 @@
 package com.mini.program.config;
 
-import com.mini.program.dao.ConsumerMapper;
+import com.mini.program.repository.ConsumerRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -26,8 +25,6 @@ public class ThirdSessionAuthFilter extends OncePerRequestFilter {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-    @Autowired
-    private ConsumerMapper consumerMapper;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,

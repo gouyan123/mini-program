@@ -2,10 +2,14 @@ package com.mini.program.entity;
 
 import com.mini.program.enums.Gender;
 import lombok.Data;
+import javax.persistence.*;
 
 @Data
+@Entity
+@Table(name = "consumer")
 public class Consumer {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String username;
     private String wechatOpenid;
@@ -20,4 +24,8 @@ public class Consumer {
     private Long createdAt;
     private Long updatedBy;
     private Long updatedAt;
+
+    public Consumer() {
+    }
+
 }
