@@ -22,12 +22,12 @@ public class Product{
     /**
      * 面料名称
      */
-    private Integer fabric_id;
+    private Integer fabric;
 
     /**
      * 边框颜色：1.白灰2.香槟3.木纹4.喷涂
      */
-    private Integer color_id;
+    private Integer color;
 
     /**
      * 产品编号
@@ -64,6 +64,7 @@ public class Product{
 
     private String imgs;
 
-    @ManyToOne
-    private Category c_id;
+    @ManyToOne(targetEntity = Category.class)
+    @JoinColumn(name = "category_id")           //product表的 外键名称
+    private Category category;
 }

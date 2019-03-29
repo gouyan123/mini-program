@@ -14,10 +14,11 @@ spring:
     username: root
     password: 123456
   jpa:
-      hibernate:
-        ddl-auto: update  # 不要用create，会删除表；都使用update，第一次会创建表，以后更新表
-        show-sql: true
-        format-sql: true
+    hibernate:
+      ddl-auto: update   # 不要用create，会删除表；都使用update，第一次会创建表，以后更新表
+    show-sql: true
+
+
   redis:
     host: 47.100.49.95
     password:
